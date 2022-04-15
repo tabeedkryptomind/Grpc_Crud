@@ -1,0 +1,67 @@
+Design a grpc server that listens at localhost:8080 
+CRUD Operations (Follow the proto file)
+Data is saved in AWS DynamoDB where BlockA[0] is the partition key.
+ 
+ 
+ 
+Create a Dockerfile to create smallest possible Docker image (go-proto) which has the above grpc server
+Create a docker-compose file with following goals:
+	1. Container name: go-proto
+	2. Expose the port 8080 of the container
+	3. Persist the data of leveldb, this means that if we restart the docker container, the data inside leveldb shouldn't be deleted.
+ 
+Write request example Body:
+ 
+{
+    "block_a": ["abcd-5148c7bfbf5dc419b571979ef0c08b18"],
+    "block_b": ["This is a patented Patent App. No. 16/636,195 A license from Co LLC is required for use."],
+    "block_c": ["Binder version 3.0 ©2020"],
+    "block_d": ["79dedc20-cf13-4de2-a5a5-6374843048d8"],
+    "block_e": [
+        "1648634672", 
+        "NTE0OGM3YmZiZjVkYzQxOWI1NzE5NzllZjBjMDhiMTg=  BASE64 {5148c7bfbf5dc419b571979ef0c08b18}", 
+        "Symmetric", 
+        "Appliance - 29283nYuiduf",
+        "LUCRA"
+    ],
+    "block_f": [
+        "1648634672",
+        "5148c7bfbf5dc419b571979ef0c08b18",
+        "A1D98452-1885-5083-B168-6A52A216B40C",
+        "312d3601-68f5-497f-8df2-afc7d0dc172d",
+        "399ef244a40f418a22077e108735347f61013e7c26194e1e2fa5a4f9f2114fad"
+    ],
+    "block_g": [
+        "1648636032",
+        "79dedc20-cf13-4de2-a5a5-6374843048d8",
+        "0d065fdd-ff4a-425c-9fbe-f6387038e79a",
+        "0d065fdd-ff4a-425c-9fbe-f6387038e79a",
+        "FC4D3E9A-8443-5568-B804-AD742F8F7F0A",
+        "ZkvGjAZ38T",
+        "ExhZoMpxXEQG4wLETNONRXPTRgqBNCMA",
+        "8aacaf30ad09d431de0a2ef03e75a09acfe69cfae5ca876ce64b465393283eb7"
+    ],
+    "block_h": [
+        "575bba45e28ed1d680b7176b5112bd9f7b8fb0d68973c5bb2a1efd52b99ad15f",
+        "1648668320",
+        "s8qijqPc4D",
+        "79dedc20-cf13-4de2-a5a5-6374843048d8",
+        "0d065fdd-ff4a-425c-9fbe-f6387038e79a",
+        "A1D98452-1885-5083-B168-6A52A216B40C",
+        "FC4D3E9A-8443-5568-B804-AD742F8F7F0A",
+        "ZkvGjAZ38T",
+        "Bqnk8xp13xUw9Hxwr3ARvMnlIrz744IT2XbrbkS1Lw9PA2Ceq+0Sreyqb6wwBcNbKwUZIqQE49Wlz4o3lON6Mi/VacuwKGSeyEOrH3uaE0fIh3xuJaDNkc8pYcAZWavwuUbJgyoaUr3YMbCEhN5WTPxPB4ZQbSZnZp6RjQsq6bTnw4Ik99Mu7yW72FUaHceEVheOFlQdidIforAXVxTM99knO8w9WLtbG0VMfT52wA3qFHrJl/WgmXwMMyxOhKG0uLUb5x5ya0F7GiAtUrksR/OB0O/+/+FBf6d9F+jdPtxjrnvqVpDsgsF1xXsD31XGdxoi76uI3V//KHRtuLrpuQ=="
+    ],
+    "block_i": ["2610cb344c01785bd0a74ac9e832815b13f394e4383693b048bb7f25e8c8e4a0"],
+    "block_j": ["developer"]
+}	
+ 
+ 
+ 
+ 
+Read, DELETE and Update request example Body:
+{
+    "block_a": ["abcd-5148c7bfbf5dc419b571979ef0c08b181"]
+}
+
+This should return the above data from POST Body

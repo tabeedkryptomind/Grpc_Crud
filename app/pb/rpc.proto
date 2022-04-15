@@ -1,0 +1,34 @@
+syntax="proto3";
+
+option go_package="./app/pb";
+
+// The greeting service definition.
+service BinderApi {
+    // Read a record from the database
+    rpc Read (Binder) returns (Binder) {}
+    // Write a record to the database
+    rpc Write (Binder) returns (BinderResponse) {}
+    // Delete a record from the database
+    rpc Delete (Binder) returns (BinderResponse) {}
+    // Update a record in the database
+    rpc Update (Binder) returns (BinderResponse) {}
+}
+  
+message Binder {
+	repeated string block_a = 1;
+	repeated string block_b = 2;
+	repeated string block_c = 3;
+	repeated string block_d = 4;
+	repeated string block_e = 5;
+	repeated string block_f = 6;
+	repeated string block_g = 7;
+	repeated string block_h = 8;
+	repeated string block_i = 9;
+	repeated string block_j = 10;
+	repeated string block_k = 11;
+} 
+
+// The BinderResponse message 
+message BinderResponse {
+    string message = 1;
+}
