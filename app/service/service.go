@@ -1,16 +1,15 @@
 package service
 
 import (
-	"Grpc-crud/app/pb"
+	//db "Grpc-crud/app/database"
+	"Grpc-crud/app/models"
+	//"Grpc-crud/app/pb"
 	er "Grpc-crud/app/utils/errors"
 	res "Grpc-crud/app/utils/response"
-	db "Grpc-crud/app/service/DynamoClient"
 ) 
 
-var (
-	Dy db.DynamoDB
-)
-func WriteRequest(b pb.Binder)(*res.ResRespo, *er.ResErr) {
-	Dy.Save(b)
+
+func WriteRequest(bin models.Binder)(*res.ResRespo, *er.ResErr) {
+	
 	return nil, nil
 }

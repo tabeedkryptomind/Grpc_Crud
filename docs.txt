@@ -2,8 +2,6 @@ Design a grpc server that listens at localhost:8080
 CRUD Operations (Follow the proto file)
 Data is saved in AWS DynamoDB where BlockA[0] is the partition key.
  
- 
- 
 Create a Dockerfile to create smallest possible Docker image (go-proto) which has the above grpc server
 Create a docker-compose file with following goals:
 	1. Container name: go-proto
@@ -11,8 +9,8 @@ Create a docker-compose file with following goals:
 	3. Persist the data of leveldb, this means that if we restart the docker container, the data inside leveldb shouldn't be deleted.
  
 Write request example Body:
- 
 {
+    "block" : "abcd-5148c7bfbf5dc419b571979ef0c08b18"
     "block_a": ["abcd-5148c7bfbf5dc419b571979ef0c08b18"],
     "block_b": ["This is a patented Patent App. No. 16/636,195 A license from Co LLC is required for use."],
     "block_c": ["Binder version 3.0 ©2020"],
@@ -54,11 +52,7 @@ Write request example Body:
     ],
     "block_i": ["2610cb344c01785bd0a74ac9e832815b13f394e4383693b048bb7f25e8c8e4a0"],
     "block_j": ["developer"]
-}	
- 
- 
- 
- 
+}	 
 Read, DELETE and Update request example Body:
 {
     "block_a": ["abcd-5148c7bfbf5dc419b571979ef0c08b181"]

@@ -1,16 +1,17 @@
 package controller
 
 import (
-	"Grpc-crud/app/pb"
+	"Grpc-crud/app/models"
+	//"Grpc-crud/app/pb"
 	"Grpc-crud/app/service"
-	
+
 	"net/http"
 
 	"github.com/gin-gonic/gin"
 )
 
 func PostBlock(ctx *gin.Context){
-	var data pb.Binder
+	var data models.Binder
 	if err := ctx.ShouldBindJSON(&data); err!= nil {
 		ctx.AbortWithStatusJSON(http.StatusBadRequest, gin.H{"status":http.StatusBadRequest, "message": "invalid"})
 	}

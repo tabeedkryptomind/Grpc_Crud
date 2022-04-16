@@ -16,4 +16,3 @@ func ReuqstAccepted(message string, ) *ResRespo {
 		Status:  http.StatusOK,
 	}
 }
-
